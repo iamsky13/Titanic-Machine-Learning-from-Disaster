@@ -37,8 +37,12 @@ train$Pclass <- as.factor(train$Pclass)
 #you can check structure using str(train)
 
 #plot graph
-ggplot(train, aes(x = Pclass, fill = factor(Survived)))+
-geom_bar(width = 0.5)+
-xlab("Pclass")+
-ylab("count")+
-labs(fill="Pclassss")
+ggplot(train, aes(x = Pclass, fill = factor(Survived))) +
+geom_bar(width = 0.5) +
+xlab("Pclass") +
+ylab("count") +
+labs(fill = "Pclassss")
+
+#check structure of train data set Name is labeled as factor and from description of kaggle it should be char
+train$Name <- as.character(train$Name)
+
