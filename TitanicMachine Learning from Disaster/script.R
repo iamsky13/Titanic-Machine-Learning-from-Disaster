@@ -46,5 +46,5 @@ labs(fill = "Pclassss")
 #check structure of train data set Name is labeled as factor and from description of kaggle it should be char
 train$Name <- as.character(train$Name)
 
-#checking if there is two person of same name and yeah two names are repeated
+#checking if there is two person of same name just to check if there are duplicate names and yeah two names are repeated 
 length(unique(combine.data$Name))
