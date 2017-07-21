@@ -19,3 +19,6 @@ combine.data$Survived <- as.factor(combine.data$Survived)
 
 #gives total number of death, number of who survived and no. that is unknown 
 table(combine.data$Survived)
+
+#gives total no. of passengers in each class 
+table(combine.data$Pclass)
