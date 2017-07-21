@@ -48,3 +48,7 @@ train$Name <- as.character(train$Name)
 
 #checking if there is two person of same name just to check if there are duplicate names and yeah two names are repeated 
 length(unique(combine.data$Name))
+
+#find duplicate name and save it as vector
+dup.name <- as.character(combine.data[which(duplicated(as.character(combine.data$Name))),"Name"])
+
