@@ -52,3 +52,6 @@ length(unique(combine.data$Name))
 #find duplicate name and save it as vector
 dup.name <- as.character(combine.data[which(duplicated(as.character(combine.data$Name))),"Name"])
 
+#to know if they are different people with same name or its just duplicate records
+combine.data[which(combine.data$Name %in% dup.name),]
+#they are different people with same name
