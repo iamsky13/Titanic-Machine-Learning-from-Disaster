@@ -22,3 +22,16 @@ table(combine.data$Survived)
 
 #gives total no. of passengers in each class 
 table(combine.data$Pclass)
+
+#visualisation is always better than data only
+#install package ggplot2
+
+
+#load library
+library(ggplot2)
+
+#we can use our common sense, first class passenger might have higher survival rate because they might get room higher up in the ship and that make you close to life boat just to make sure
+#since we can say passengers survived or not we must use training data sets
+#we change datatype of Pclass (same previous reason) 
+train$Pclass <- as.factor(train$Pclass)
+#you can check structure using str(train)
