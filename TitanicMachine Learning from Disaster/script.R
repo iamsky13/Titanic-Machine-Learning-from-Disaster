@@ -16,3 +16,6 @@ combine.data$Pclass <- as.factor(combine.data$Pclass)
 
 #changed data type of survived as well according to kaggle also chr data type is not prefered in ML
 combine.data$Survived <- as.factor(combine.data$Survived)
+
+#gives total number of death, number of who survived and no. that is unknown 
+table(combine.data$Survived)
