@@ -13,3 +13,6 @@ combine.data <- rbind(train, test.survived)
 
 #According to definition of Kaggle Pclass is Ticket class that gives socio economic status so it should not be integer you can check its structure using str(combine.data)
 combine.data$Pclass <- as.factor(combine.data$Pclass)
+
+#changed data type of survived as well according to kaggle also chr data type is not prefered in ML
+combine.data$Survived <- as.factor(combine.data$Survived)
