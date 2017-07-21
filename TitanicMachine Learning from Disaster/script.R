@@ -35,3 +35,10 @@ library(ggplot2)
 #we change datatype of Pclass (same previous reason) 
 train$Pclass <- as.factor(train$Pclass)
 #you can check structure using str(train)
+
+#plot graph
+ggplot(train, aes(x = Pclass, fill = factor(Survived)))+
+geom_bar(width = 0.5)+
+xlab("Pclass")+
+ylab("count")+
+labs(fill="Pclassss")
