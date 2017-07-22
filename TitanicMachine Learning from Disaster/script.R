@@ -81,6 +81,9 @@ if (length(grep("Mr.", name)) > 0) {
 if (length(grep("Mrs.", name)) > 0) {
     return("Mrs.")
 }
+if (length(grep("Master.", name)) > 0) {
+    return("Master.")
+}
 else {
 return("Other")
 }
@@ -99,7 +102,44 @@ combine.data$Titles <- as.factor(titles)
 #Titles vs number with survived and death grouped by class ticket
 ggplot(combine.data[1:891,], aes(x = Titles, fill = Survived)) +
 geom_bar(width = 0.5) +
-facet_wrap(~Pclass)+
+facet_wrap(~Pclass) +
 xlab("Titles") +
 ylab("number") +
 labs(fill = "Survived")
+
+
+#create graphical diagram
+#sex vs number with survived and death grouped by class ticket
+ggplot(combine.data[1:891,], aes(x = Sex, fill = Survived)) +
+geom_bar(width = 0.5) +
+facet_wrap(~Pclass) +
+xlab("Sex") +
+ggtitle("Pclass")+
+ylab("number") +
+labs(fill = "Survived")
+
+#to see if all data are available
+Summary(combine.data$Age)
+
+#to see unavailable data in training set
+summary(combine.data[1:891,"Age"])
+
+
+
+#create graphical diagram
+#sex vs number with survived and death grouped by class ticket
+ggplot(combine.data[1:891,], aes(x = Age, fill = Survived)) +
+geom_histogram(binwidth =10) +
+facet_wrap(~Sex + Pclass) +
+xlab("age") +
+ggtitle("Pclass") +
+ylab("number") +
+labs(fill = "Survived")
+
+
+#for children
+boys <- combine.data[which(combine.data$Titles == "Master."),]
+
+#to check min amd max age
+summary(boys$Age)
+
