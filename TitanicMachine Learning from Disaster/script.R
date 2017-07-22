@@ -55,3 +55,7 @@ dup.name <- as.character(combine.data[which(duplicated(as.character(combine.data
 #to know if they are different people with same name or its just duplicate records
 combine.data[which(combine.data$Name %in% dup.name),]
 #they are different people with same name
+
+library(stringr)
+
+missses<-combine.data[which(str_detect(combine.data$Name,"Miss.")),]
