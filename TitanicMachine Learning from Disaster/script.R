@@ -146,7 +146,19 @@ summary(boys$Age)
 #to check if there is children in misses data frame
 summary(missses$Age)
 
+#misses vs Pclass
 ggplot(missses[missses$Survived != "NONE",], aes(x = Age, fill = Survived)) +
+facet_wrap(~Pclass) +
+geom_histogram(binwidth = 10) +
+xlab("Age") +
+ylab("number") +
+ggtitle("Pclass")
+
+#miss traveling alone
+alonemiss <- missses[which(missses$SibSp == 0 & missses$Parch == 0),]
+
+#visualize vs age
+ggplot(alonemiss[alonemiss$Survived != "NONE",], aes(x = Age, fill = Survived)) +
 facet_wrap(~Pclass) +
 geom_histogram(binwidth = 10) +
 xlab("Age") +
