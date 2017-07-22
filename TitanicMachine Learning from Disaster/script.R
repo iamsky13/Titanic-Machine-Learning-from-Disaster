@@ -140,6 +140,15 @@ labs(fill = "Survived")
 #for children
 boys <- combine.data[which(combine.data$Titles == "Master."),]
 
-#to check min amd max age
+#to check min amd max age probably children
 summary(boys$Age)
 
+#to check if there is children in misses data frame
+summary(missses$Age)
+
+ggplot(missses[missses$Survived != "NONE",], aes(x = Age, fill = Survived)) +
+facet_wrap(~Pclass) +
+geom_histogram(binwidth = 10) +
+xlab("Age") +
+ylab("number") +
+ggtitle("Pclass")
