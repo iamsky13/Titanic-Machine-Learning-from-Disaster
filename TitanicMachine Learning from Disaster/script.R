@@ -56,6 +56,42 @@ dup.name <- as.character(combine.data[which(duplicated(as.character(combine.data
 combine.data[which(combine.data$Name %in% dup.name),]
 #they are different people with same name
 
+#load library
 library(stringr)
 
-missses<-combine.data[which(str_detect(combine.data$Name,"Miss.")),]
+#make a new data frame from those rows that has Miss in the name
+misses <- combine.data[which(str_detect(combine.data$Name, "Miss.")),]
+#to see first 5 rows
+misses[1:5,]
+
+#similarly Mrs in the name
+mrses <- combine.data[which(str_detect(combine.data$Name, "Mrs.")),]
+mrses[1:5,]
+
+#for graphical display
+#extract Mr. Miss. Mrs etc
+extractTitle <- function(name) {
+name<-as.character(name)
+if (length(grep("Miss.", name)) > 0) {
+    return("Miss.")
+}
+if (length(grep("Mr.", name)) > 0) {
+    return("Mr.")
+}
+if (length(grep("Mrs.", name)) > 0) {
+    return("Mrs.")
+}
+else {
+return("Other")
+}
+}
+
+
+titles <- NULL
+
+#extract Title and add its value to new column in combine.data
+for (i in 1:nrow(combine.data)) {
+titles <- c(titles,extractTitle(combine.data[i,"Name"]))
+}
+
+combine.data$Titles <- as.factor(titles)
