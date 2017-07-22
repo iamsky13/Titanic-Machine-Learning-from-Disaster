@@ -86,7 +86,6 @@ return("Other")
 }
 }
 
-
 titles <- NULL
 
 #extract Title and add its value to new column in combine.data
@@ -95,3 +94,12 @@ titles <- c(titles,extractTitle(combine.data[i,"Name"]))
 }
 
 combine.data$Titles <- as.factor(titles)
+
+#create graphical diagram
+#Titles vs number with survived and death grouped by class ticket
+ggplot(combine.data[1:891,], aes(x = Titles, fill = Survived)) +
+geom_bar(width = 0.5) +
+facet_wrap(~Pclass)+
+xlab("Titles") +
+ylab("number") +
+labs(fill = "Survived")
